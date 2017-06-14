@@ -50,7 +50,8 @@ if (params.help) {
     log.info "--output_folder            FOLDER              Output VCF folder. Default: . "
     log.info ""
     log.info "Flags:"
-    log.info "--use_SM                                    Use SM from the BAM as sample name. Default: file name"
+    log.info "--use_SM                                       Use SM from the BAM as sample name. Default: file name"
+    log.info "--optimized                                    Run platypus with optimized option based on WGS/WES of GIAB platinium"
     log.info ""
     exit 0
 
@@ -71,6 +72,12 @@ params.cpu = 1
 params.mem = 4
 params.use_SM = false
 sample_names = params.use_SM ? "BAM" : "FILE"
+params.optimized = false
+if (params.optimized){
+  options = "--badReadsThreshold=0 --qdThreshold=0 --rmsmqThreshold=20 --hapScoreThreshold=10 --scThreshold=0.99"
+} else {
+  options = ""
+}
 
 
 bams = Channel.fromPath( params.input_folder+'/*.bam' )
@@ -106,7 +113,7 @@ process platypus {
   shell:
   bam_tag = bam_bai[0].baseName
   '''
-  !{params.platypus_path} callVariants --bamFiles=!{bam_tag}.bam --output=!{bam_tag}_platypus.vcf !{region_tag}!{params.region} --refFile=!{params.ref}
+  !{params.platypus_path} callVariants --bamFiles=!{bam_tag}.bam --output=!{bam_tag}_platypus.vcf !{region_tag}!{params.region} --refFile=!{params.ref} !{options}
   '''
 
 }

@@ -48,7 +48,7 @@ if (params.help) {
     log.info '--cpu                      INTEGER             Number of cpu used for parallel variant calling. Default: 1.'
     log.info '--mem                      INTEGER             Size of memory used, in GB. Default: 4.'
     log.info "--output_folder            FOLDER              Output VCF folder. Default: . "
-    log.info "--options                  STRING              Options to pass to platypus (e.g. " --scThreshold=0.9 --qdThreshold=10 ") "
+    log.info '--options                  STRING              Options to pass to platypus (e.g. " --scThreshold=0.9 --qdThreshold=10 ") '
     log.info "                                               Caution: for --options, space between quotes and arguments are mandatory. "
     log.info ""
     log.info "Flags:"

@@ -48,6 +48,8 @@ if (params.help) {
     log.info '--cpu                      INTEGER             Number of cpu used for parallel variant calling. Default: 1.'
     log.info '--mem                      INTEGER             Size of memory used, in GB. Default: 4.'
     log.info "--output_folder            FOLDER              Output VCF folder. Default: . "
+    log.info "--options                  STRING              Options to pass to platypus (e.g. " --scThreshold=0.9 --qdThreshold=10 ") "
+    log.info "                                               Caution: for --options, space between quotes and arguments are mandatory. "
     log.info ""
     log.info "Flags:"
     log.info "--optimized                                    Run platypus with optimized option based on WGS/WES of GIAB platinium"
@@ -60,22 +62,26 @@ params.input_folder = null
 params.output_folder = "."
 params.platypus_path = "Platypus.py"
 params.region = null
+
 if (params.region){
   region_tag = "--region="
 } else {
   region_tag = ""
 }
+
 ref = file(params.ref)
 ref_fai = file( params.ref+'.fai' )
 params.cpu = 1
 params.mem = 4
+
 params.optimized = false
 if (params.optimized){
-  options = "--badReadsThreshold=0 --qdThreshold=0 --rmsmqThreshold=20 --hapScoreThreshold=10 --scThreshold=0.99"
+  opt_options = "--badReadsThreshold=0 --qdThreshold=0 --rmsmqThreshold=20 --hapScoreThreshold=10 --scThreshold=0.99"
 } else {
-  options = ""
+  opt_options = ""
 }
 
+params.options = ""
 
 bams = Channel.fromPath( params.input_folder+'/*.bam' )
               .ifEmpty { error "Cannot find any bam file in: ${params.input_folder}" }
@@ -110,7 +116,7 @@ process platypus {
   shell:
   bam_tag = bam_bai[0].baseName
   '''
-  !{params.platypus_path} callVariants --bamFiles=!{bam_tag}.bam --output=!{bam_tag}_platypus.vcf !{region_tag}!{params.region} --refFile=!{params.ref} !{options}
+  !{params.platypus_path} callVariants --bamFiles=!{bam_tag}.bam --output=!{bam_tag}_platypus.vcf !{region_tag}!{params.region} --refFile=!{params.ref} !{opt_options} !{params.options}
   '''
 
 }

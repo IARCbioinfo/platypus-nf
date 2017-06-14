@@ -20,21 +20,20 @@ You can avoid installing all the external software by only installing Docker. Se
   | Type      | Description     |
   |-----------|---------------|
   | --input_folder | Folder containing BAM files  |
-  | --ref | Folder containing BAM files  |
+  | --ref | Path fo fasta reference  |
 
 ## Parameters
 
-  * #### Mandatory
-  | Name      | Example value | Description     |
-  |-----------|---------------|-----------------|
-  | --param1    |            xx | ...... |
-  | --param2    |            xx | ...... |
-
   * #### Optional
-| Name      | Default value | Description     |
-|-----------|---------------|-----------------|
-| --param3   |            xx | ...... |
-| --param4    |            xx | ...... |
+  | Name             | Example value               | Description  |
+  |------------------|-----------------------------|--------------|
+  | --platypus_path  | /usr/bin/Platypus.py        | path to platypus executable |
+  | --region         | chr1;chr1:0-1000; mybed.bed | region to call |
+  | --cpu            |            12 | number of cpu used by platypus |
+  | --mem            |            8 | memory in GB used by platypus |
+  | --output_folder  |            . | folder to store output vcfs |
+  | --options        | " --scThreshold=0.9 --qdThreshold=10 " | options to pass to platypus |
+
 
   * #### Flags
 
@@ -43,23 +42,18 @@ Flags are special parameters without value.
 | Name      | Description     |
 |-----------|-----------------|
 | --help    | Display help |
-| --flag2    |      .... |
-
+| --optimized    |  use optimized parameters :  |
+|     |  "--badReadsThreshold=0 --qdThreshold=0 --rmsmqThreshold=20 --hapScoreThreshold=10 --scThreshold=0.99 |
 
 ## Usage
   ```
-  ...
+  nextflow run platypus.nf --input_folder ~/data_test/BAM/ --ref ~/data_test/17.fasta
   ```
 
 ## Output
   | Type      | Description     |
   |-----------|---------------|
-  | output1    | ...... |
-  | output2    | ...... |
-
-
-## Detailed description (optional section)
-...
+  | VCFs    | one VCF by input BAM |
 
 ## Directed Acyclic Graph
 
@@ -68,10 +62,4 @@ Flags are special parameters without value.
 
   | Name      | Email | Description     |
   |-----------|---------------|-----------------|
-  | contrib1*    |            xx | Developer to contact for support (link to specific gitter chatroom) |
-  | contrib2    |            xx | Developer |
-  | contrib3    |            xx | Tester |
-
-## References (optional)
-
-## FAQ (optional)
+  | Tiffany Delhomme*    | delhommet@students.iarc.fr | Developer to contact for support (link to specific gitter chatroom)

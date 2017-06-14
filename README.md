@@ -4,7 +4,7 @@
 ![Workflow representation](template-nf.png)
 
 ## Description
-Perform germlne variant calling with platypus, with optional use of optimized parameters based on performance analysis on [Illumina Platinium Genome](https://www.illumina.com/platinumgenomes.html) (both whole exome/genome sequencing).
+Perform germline variant calling with platypus, with optional use of optimized parameters based on performance analysis on [Illumina Platinium Genome](https://www.illumina.com/platinumgenomes.html) (both whole exome/genome sequencing).
 
 ## Dependencies
 

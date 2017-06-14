@@ -43,7 +43,7 @@ Flags are special parameters without value.
 |-----------|-----------------|
 | --help    | Display help |
 | --optimized    |  use optimized parameters :  |
-|     |  "--badReadsThreshold=0 --qdThreshold=0 --rmsmqThreshold=20 --hapScoreThreshold=10 --scThreshold=0.99 |
+|     |  --badReadsThreshold=0 --qdThreshold=0 --rmsmqThreshold=20 --hapScoreThreshold=10 --scThreshold=0.99 |
 
 ## Usage
   ```

@@ -1,0 +1,16 @@
+machine:
+  post:
+    - pyenv global 2.7.12
+    - wget https://github.com/samtools/htslib/releases/download/1.4.1/htslib-1.4.1.tar.bz2 && tar xjf htslib-1.4.1.tar.bz2 && cd htslib-1.4.1/ && make
+    - wget -qO- get.nextflow.io | bash ; chmod 755 nextflow ; sudo ln -s ~/nextflow /usr/local/bin/
+    - git clone --depth=1 https://github.com/IARCbioinfo/data_test.git
+    - git clone https://github.com/andyrimmer/Platypus && cd Platypus && make
+
+test:
+  override:
+    - |
+      ls ~
+    - |
+      cd ~ && nextflow run ~/platypus-nf/platypus.nf --help
+    - |
+      cd ~ && nextflow run ~/platypus-nf/platypus.nf --input_folder ~/data_test/BAM/ --ref ~/data_test/17.fasta --platypus_path ~/Platypus/bin/Platypus.py

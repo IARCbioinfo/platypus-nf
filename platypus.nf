@@ -50,7 +50,6 @@ if (params.help) {
     log.info "--output_folder            FOLDER              Output VCF folder. Default: . "
     log.info ""
     log.info "Flags:"
-    log.info "--use_SM                                       Use SM from the BAM as sample name. Default: file name"
     log.info "--optimized                                    Run platypus with optimized option based on WGS/WES of GIAB platinium"
     log.info ""
     exit 0
@@ -70,8 +69,6 @@ ref = file(params.ref)
 ref_fai = file( params.ref+'.fai' )
 params.cpu = 1
 params.mem = 4
-params.use_SM = false
-sample_names = params.use_SM ? "BAM" : "FILE"
 params.optimized = false
 if (params.optimized){
   options = "--badReadsThreshold=0 --qdThreshold=0 --rmsmqThreshold=20 --hapScoreThreshold=10 --scThreshold=0.99"

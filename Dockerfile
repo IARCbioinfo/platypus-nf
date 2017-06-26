@@ -13,6 +13,7 @@ RUN mkdir -p /var/cache/apt/archives/partial && \
 
 	# Install dependences
 	DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
+	make \
   #to clone a github repo
 	git \
 	#to run platypus

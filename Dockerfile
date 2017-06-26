@@ -14,7 +14,7 @@ RUN mkdir -p /var/cache/apt/archives/partial && \
 	# Install dependences
 	DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
 	make \
-	g++ \
+	gcc \
   #to clone a github repo
 	git \
 	#to run platypus
@@ -29,7 +29,11 @@ RUN mkdir -p /var/cache/apt/archives/partial && \
 	zlib1g-dev \
 	#to install htslib
 	libbz2-dev \
+	liblzma-dev \
 	# for platypus make
+	python-dev \
+	libxml2-dev \
+	libxslt-dev \
 	Cython && \
 
 	# Install htslib required by platypus
@@ -45,3 +49,4 @@ RUN mkdir -p /var/cache/apt/archives/partial && \
 	git clone git://github.com/andyrimmer/Platypus.git && \
 	cd Platypus && \
 	make
+  chmod +x bin/Platypus.py

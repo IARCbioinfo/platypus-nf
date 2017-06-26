@@ -9,7 +9,7 @@ RUN mkdir -p /var/cache/apt/archives/partial && \
 	chmod 640 /var/cache/apt/archives/lock && \
 	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys F76221572C52609D && \
 	apt-get clean && \
-	apt-get update -y 
+	apt-get update -y && \
 
 
 	# Install dependences
@@ -21,7 +21,7 @@ RUN mkdir -p /var/cache/apt/archives/partial && \
 	ca-certificates \ #for wget a github repo
 	zlib1g-dev \ #to install htslib
 	libbz2-dev \ #to install htslib
-	Cython && # for platypus make
+	Cython && \ # for platypus make
 
 	# Install htslib required by platypus
 	wget https://github.com/samtools/htslib/releases/download/1.4.1/htslib-1.4.1.tar.bz2 && \
@@ -35,5 +35,5 @@ RUN mkdir -p /var/cache/apt/archives/partial && \
 	# Install manually last version of platypus from github
 	git clone git://github.com/andyrimmer/Platypus.git && \
 	cd Platypus && \
-	make &&\
+	make
 

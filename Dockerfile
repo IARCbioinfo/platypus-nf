@@ -48,5 +48,5 @@ RUN mkdir -p /var/cache/apt/archives/partial && \
 	# Install manually last version of platypus from github
 	git clone git://github.com/andyrimmer/Platypus.git && \
 	cd Platypus && \
-	make \
+	make && \
   chmod +x bin/Platypus.py

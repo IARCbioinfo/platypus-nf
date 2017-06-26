@@ -11,17 +11,24 @@ RUN mkdir -p /var/cache/apt/archives/partial && \
 	apt-get clean && \
 	apt-get update -y && \
 
-
 	# Install dependences
 	DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
-	git \ #to clone a github repo
-	python \ #to run platypus
-	wget \ #to download dependencies
-	bzip2 \ #to extract repo
-	ca-certificates \ #for wget a github repo
-	zlib1g-dev \ #to install htslib
-	libbz2-dev \ #to install htslib
-	Cython && \ # for platypus make
+  #to clone a github repo
+	git \
+	#to run platypus
+	python \
+	#to download dependencies
+	wget \
+	#to extract repo
+	bzip2 \
+	#for wget a github repo
+	ca-certificates \
+	#to install htslib
+	zlib1g-dev \
+	#to install htslib
+	libbz2-dev \
+	# for platypus make
+	Cython && \
 
 	# Install htslib required by platypus
 	wget https://github.com/samtools/htslib/releases/download/1.4.1/htslib-1.4.1.tar.bz2 && \
@@ -36,4 +43,3 @@ RUN mkdir -p /var/cache/apt/archives/partial && \
 	git clone git://github.com/andyrimmer/Platypus.git && \
 	cd Platypus && \
 	make
-

@@ -37,9 +37,9 @@ RUN mkdir -p /var/cache/apt/archives/partial && \
 	Cython && \
 
 	# Install htslib required by platypus
-	wget https://github.com/samtools/htslib/releases/download/1.4.1/htslib-1.4.1.tar.bz2 && \
-	tar -jxf htslib-1.4.1.tar.bz2 && \
-	cd htslib-1.4.1 && \
+	wget https://github.com/samtools/htslib/releases/download/1.5/htslib-1.5.tar.bz2 && \
+	tar -jxf htslib-1.5.tar.bz2 && \
+	cd htslib-1.5 && \
 	make && \
 	make install && \
 	cd .. && \

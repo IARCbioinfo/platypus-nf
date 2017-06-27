@@ -7,7 +7,7 @@ machine:
 
 test:
   override:
-    - | # run docker build to do not search for :latest image on dockerhub
+    - | # run manually docker to do not search for :latest image on dockerhub
       cd ~/platypus-nf
       docker build -t iarcbioinfo/platypus-nf .
     - | # execute the tests

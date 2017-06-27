@@ -43,7 +43,7 @@ RUN mkdir -p /var/cache/apt/archives/partial && \
 	make && \
 	make install && \
 	cd .. && \
-	rm -rf htslib-1.4.1 htslib-1.4.1.tar.bz2 && \
+	rm -rf htslib-1.5 htslib-1.5.tar.bz2 && \
 
 	# Install manually last version of platypus from github
 	git clone git://github.com/andyrimmer/Platypus.git && \

@@ -7,10 +7,10 @@ machine:
 
 test:
   override:
-    - | # run docker build    
+    - | # run docker build
       cd ~/platypus-nf
       docker build -t iarcbioinfo/platypus-nf .
     - | # execute the tests
       cd ~ && nextflow run ~/platypus-nf/platypus.nf -with-docker iarcbioinfo/platypus-nf --help
     - |
-      cd ~ && nextflow run ~/platypus-nf/platypus.nf -with-docker iarcbioinfo/platypus-nf --input_folder ~/data_test/BAM/ --ref ~/data_test/17.fasta --platypus_path ~/Platypus/bin/Platypus.py
+      cd ~ && nextflow run ~/platypus-nf/platypus.nf -with-docker iarcbioinfo/platypus-nf --input_folder ~/data_test/BAM/ --ref ~/data_test/17.fasta --platypus_path /Platypus/bin/Platypus.py

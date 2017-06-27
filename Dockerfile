@@ -15,7 +15,7 @@ RUN mkdir -p /var/cache/apt/archives/partial && \
 	DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
 	make \
 	gcc \
-  #to clone a github repo
+        #to clone a github repo
 	git \
 	#to run platypus
 	python \
@@ -45,12 +45,12 @@ RUN mkdir -p /var/cache/apt/archives/partial && \
 	cd .. && \
 	rm -rf htslib-1.5 htslib-1.5.tar.bz2 && \
 	# Specify PATH for platypus
-  export C_INCLUDE_PATH=/usr/local/include
-  export LIBRARY_PATH=/usr/local/lib
-  export LD_LIBRARY_PATH=/usr/local/lib
+        export C_INCLUDE_PATH=/usr/local/include
+        export LIBRARY_PATH=/usr/local/lib
+        export LD_LIBRARY_PATH=/usr/local/lib
 
 	# Install manually last version of platypus from github
 	git clone git://github.com/andyrimmer/Platypus.git && \
 	cd Platypus && \
 	make && \
-  chmod +x bin/Platypus.py
+        chmod +x bin/Platypus.py

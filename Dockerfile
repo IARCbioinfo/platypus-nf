@@ -44,6 +44,10 @@ RUN mkdir -p /var/cache/apt/archives/partial && \
 	make install && \
 	cd .. && \
 	rm -rf htslib-1.5 htslib-1.5.tar.bz2 && \
+	# Specify PATH for platypus
+  export C_INCLUDE_PATH=/usr/local/include
+  export LIBRARY_PATH=/usr/local/lib
+  export LD_LIBRARY_PATH=/usr/local/lib
 
 	# Install manually last version of platypus from github
 	git clone git://github.com/andyrimmer/Platypus.git && \

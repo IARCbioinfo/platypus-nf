@@ -55,3 +55,6 @@ RUN mkdir -p /var/cache/apt/archives/partial && \
 ENV C_INCLUDE_PATH=/usr/local/include
 ENV LIBRARY_PATH=/usr/local/lib
 ENV LD_LIBRARY_PATH=/usr/local/lib
+
+# Clean
+RUN DEBIAN_FRONTEND=noninteractive apt-get autoremove -y && apt-get clean

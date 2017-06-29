@@ -56,6 +56,7 @@ Flags are special parameters without value.
   | VCFs    | one VCF by input BAM |
 
 ## Directed Acyclic Graph
+[![DAG](dag.png)](http://htmlpreview.github.io/?https://github.com/IARCbioinfo/platypus-nf/blob/dev/dag.html)
 
 
 ## Contributions

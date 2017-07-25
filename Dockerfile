@@ -50,7 +50,7 @@ RUN mkdir -p /var/cache/apt/archives/partial && \
 	cd Platypus && \
 	make && \
         chmod +x bin/Platypus.py && \
-	cp bin/Platypus.py ~ && cd ~
+	cp bin/Platypus.py ~ && cd \
 
 # Specify PATH for platypus
 ENV C_INCLUDE_PATH=/usr/local/include

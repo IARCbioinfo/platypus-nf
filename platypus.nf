@@ -60,7 +60,7 @@ if (params.help) {
 
 params.input_folder = null
 params.output_folder = "."
-params.platypus_path = "~/Platypus.py"
+params.platypus_bin = "Platypus.py"
 params.region = null
 
 if (params.region){
@@ -116,7 +116,7 @@ process platypus {
   shell:
   bam_tag = bam_bai[0].baseName
   '''
-  !{params.platypus_path} callVariants --bamFiles=!{bam_tag}.bam --output=!{bam_tag}_platypus.vcf !{region_tag}!{params.region} --refFile=!{params.ref} !{opt_options} !{params.options}
+  !{params.platypus_bin} callVariants --bamFiles=!{bam_tag}.bam --output=!{bam_tag}_platypus.vcf !{region_tag}!{params.region} --refFile=!{params.ref} !{opt_options} !{params.options}
   '''
 
 }

@@ -43,7 +43,7 @@ if (params.help) {
     log.info "--ref                      FASTA               Path to fasta reference."
     log.info ""
     log.info "Optional arguments:"
-    log.info "--platypus_path            PATH                Path to platypus. Default: Platypus.py"
+    log.info "--platypus_bin            PATH                Path to platypus. Default: Platypus.py"
     log.info "--region                   FILE or REGION      Bed file or region (e.g. chr1, chr1:0-1000)"
     log.info '--cpu                      INTEGER             Number of cpu used for parallel variant calling. Default: 1.'
     log.info '--mem                      INTEGER             Size of memory used, in GB. Default: 4.'

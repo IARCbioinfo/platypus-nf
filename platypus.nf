@@ -43,7 +43,7 @@ if (params.help) {
     log.info "--ref                      FASTA               Path to fasta reference."
     log.info ""
     log.info "Optional arguments:"
-    log.info "--platypus_path            PATH                Path to platypus. Default: Platypus.py"
+    log.info "--platypus_bin            PATH                Path to platypus. Default: Platypus.py"
     log.info "--region                   FILE or REGION      Bed file or region (e.g. chr1, chr1:0-1000)"
     log.info '--cpu                      INTEGER             Number of cpu used for parallel variant calling. Default: 1.'
     log.info '--mem                      INTEGER             Size of memory used, in GB. Default: 4.'
@@ -60,7 +60,7 @@ if (params.help) {
 
 params.input_folder = null
 params.output_folder = "."
-params.platypus_path = "Platypus.py"
+params.platypus_bin = "/Platypus/bin/Platypus.py"
 params.region = null
 
 if (params.region){
@@ -116,7 +116,7 @@ process platypus {
   shell:
   bam_tag = bam_bai[0].baseName
   '''
-  !{params.platypus_path} callVariants --bamFiles=!{bam_tag}.bam --output=!{bam_tag}_platypus.vcf !{region_tag}!{params.region} --refFile=!{params.ref} !{opt_options} !{params.options}
+  !{params.platypus_bin} callVariants --bamFiles=!{bam_tag}.bam --output=!{bam_tag}_platypus.vcf !{region_tag}!{params.region} --refFile=!{params.ref} !{opt_options} !{params.options}
   '''
 
 }

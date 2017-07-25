@@ -60,7 +60,7 @@ if (params.help) {
 
 params.input_folder = null
 params.output_folder = "."
-params.platypus_path = "Platypus.py"
+params.platypus_path = "./Platypus.py"
 params.region = null
 
 if (params.region){

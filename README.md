@@ -39,9 +39,14 @@ Flags are special parameters without value.
 | --help    | Display help |
 | --optimized    |  use optimized parameters: --badReadsThreshold=0 --qdThreshold=0 --rmsmqThreshold=20 --hapScoreThreshold=10 --scThreshold=0.99 |
 
+## Download test data set
+  ```
+  cd ~ && git clone https://github.com/iarcbioinfo/data_test
+  ```
+
 ## Usage
   ```
-  nextflow run iarcbioinfo/platypus-nf -with-docker --input_folder ~/data_test/BAM/ --ref ~/data_test/17.fasta
+  nextflow run iarcbioinfo/platypus-nf -with-docker --input_folder ~/data_test/BAM/ --ref ~/data_test/REF/17.fasta
   ```
 
 ## Output

@@ -41,7 +41,7 @@ Flags are special parameters without value.
 
 ## Usage
   ```
-  nextflow run iarcbioinfo/platypus-nf --input_folder ~/data_test/BAM/ --ref ~/data_test/17.fasta
+  nextflow run iarcbioinfo/platypus-nf -with-docker --input_folder ~/data_test/BAM/ --ref ~/data_test/17.fasta
   ```
 
 ## Output

@@ -22,7 +22,7 @@ Perform germline variant calling with platypus, with optional use of optimized p
   * #### Optional
   | Name             | Example value               | Description  |
   |------------------|-----------------------------|--------------|
-  | --platypus_path  | /usr/bin/Platypus.py        | path to platypus executable |
+  | --platypus_bin  | /usr/bin/Platypus.py        | path to platypus executable |
   | --region         | chr1;chr1:0-1000; mybed.bed | region to call |
   | --cpu            |            12 | number of cpu used by platypus |
   | --mem            |            4 | memory in GB used by platypus |

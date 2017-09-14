@@ -13,6 +13,7 @@ RUN mkdir -p /var/cache/apt/archives/partial && \
 
 	# Install dependences
 	DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
+	g++ \
 	make \
 	gcc \
         #to clone a github repo
@@ -49,7 +50,15 @@ RUN mkdir -p /var/cache/apt/archives/partial && \
 	git clone git://github.com/andyrimmer/Platypus.git && \
 	cd Platypus && \
 	make && \
-        chmod +x bin/Platypus.py 
+  chmod +x bin/Platypus.py && \
+	cd / && \
+
+	# Install manually last version of vt from github
+	git clone https://github.com/atks/vt.git && \
+	cd vt && \
+	make && \
+	chmod +x vt
+
 
 # Specify PATH for platypus
 ENV C_INCLUDE_PATH=/usr/local/include

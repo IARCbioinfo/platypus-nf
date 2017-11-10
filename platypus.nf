@@ -103,7 +103,7 @@ process platypus {
 
   tag { bam_tag }
 
-  publishDir params.output_folder, mode: 'move', pattern: '*.vcf'
+  publishDir params.output_folder, mode: 'move', pattern: '*.vcf.gz'
 
   input:
   file bam_bai

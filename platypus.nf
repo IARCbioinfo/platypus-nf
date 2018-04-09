@@ -116,7 +116,7 @@ process platypus {
   file ref_fai
 
   output:
-  file '*vcf.gz' into platypus_vcf
+  file '*vcf' into platypus_vcf
 
   shell:
   bam_tag = bam_bai[0].baseName

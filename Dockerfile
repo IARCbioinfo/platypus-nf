@@ -35,7 +35,10 @@ RUN mkdir -p /var/cache/apt/archives/partial && \
 	python-dev \
 	libxml2-dev \
 	libxslt-dev \
-	Cython && \
+	Cython \
+	# for vt make (lcurl and lcrypto)
+	libcurl3-dev \
+	libssl-dev && \
 
 	# Install htslib required by platypus
 	wget https://github.com/samtools/htslib/releases/download/1.5/htslib-1.5.tar.bz2 && \

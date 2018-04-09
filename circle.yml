@@ -12,6 +12,8 @@ test:
       docker build -t iarcbioinfo/platypus-nf .
     - | # execute the tests
       cd ~ && nextflow run ~/platypus-nf/platypus.nf -with-docker --help
+    - | # test --normalization option
+      cd ~ && nextflow run ~/platypus-nf/platypus.nf -with-docker --input_folder ~/data_test/BAM/ --ref ~/data_test/REF/17.fasta --normalization
     - |
       cd ~ && nextflow run ~/platypus-nf/platypus.nf -with-docker --input_folder ~/data_test/BAM/ --ref ~/data_test/REF/17.fasta -with-dag dag.png
       cd ~ && nextflow run ~/platypus-nf/platypus.nf -with-docker --input_folder ~/data_test/BAM/ --ref ~/data_test/REF/17.fasta -with-dag dag.html

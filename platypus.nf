@@ -53,11 +53,13 @@ if (params.help) {
     log.info ""
     log.info "Flags:"
     log.info "--optimized                                    Run platypus with optimized option based on WGS/WES of GIAB platinium"
+    log.info "--normalization                                Normalize the VCF with vt"
     log.info ""
     exit 0
 
 }
 
+params.normalization = null
 params.input_folder = null
 params.output_folder = "."
 params.platypus_bin = "/Platypus/bin/Platypus.py"
@@ -103,7 +105,9 @@ process platypus {
 
   tag { bam_tag }
 
-  publishDir params.output_folder, mode: 'move', pattern: '*.vcf.gz'
+  if(params.normalization == null){
+    publishDir params.output_folder, mode: 'move', pattern: '*.vcf'
+  }
 
   input:
   file bam_bai
@@ -111,13 +115,39 @@ process platypus {
   file ref_fai
 
   output:
-  file '*vcf.gz' into output_vcf
+  file '*vcf.gz' into platypus_vcf
 
   shell:
   bam_tag = bam_bai[0].baseName
   '''
-  !{params.platypus_bin} callVariants --bamFiles=!{bam_tag}.bam --output=!{bam_tag}_platypus.vcf !{region_tag}!{params.region} --refFile=!{ref} !{opt_options} !{params.options}
-  bgzip -c !{bam_tag}_platypus.vcf > !{bam_tag}_platypus.vcf.gz
+  !{params.platypus_bin} callVariants --bamFiles=!{bam_tag}.bam --output=!{bam_tag}_platypus.vcf !{region_tag}!{params.region} --refFile=!{params.ref} !{opt_options} !{params.options}
   '''
+
+}
+
+if(params.normalization){
+
+  process vt {
+
+    tag { vcf_tag }
+
+    publishDir params.output_folder, mode: 'move', pattern: '*.vcf'
+
+    input:
+    file platypus_vcf
+    file ref
+    file ref_fai
+
+    output:
+    file("${vcf_tag}_vt.vcf.gz") into vt_VCF
+
+    shell:
+    vcf_tag = vcf.baseName.replace("_platypus.vcf","")
+    '''
+    awk '$1 ~ /^#/ {print $0;next} {print $0 | "LC_ALL=C sort -k1,1V -k2,2n"}' !{vcf_tag}_platypus.vcf | bgzip > !{vcf_tag}_platypus_sort.vcf.gz
+    zcat !{vcf_tag}_platypus_sort.vcf.gz | vt decompose -s - | vt decompose_blocksub -a - | vt normalize -r !{ref} -q - | vt uniq - | bgzip > !{vcf_tag}_vt.vcf.gz
+    tabix -p vcf !{vcf_tag}_vt.vcf.gz
+    '''
+  }
 
 }

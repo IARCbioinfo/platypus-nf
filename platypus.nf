@@ -63,6 +63,7 @@ params.normalization = null
 params.input_folder = null
 params.output_folder = "."
 params.platypus_bin = "/Platypus/bin/Platypus.py"
+params.vt_bin = "vt/vt"
 params.region = null
 
 if (params.region){
@@ -145,7 +146,7 @@ if(params.normalization){
     vcf_tag = vcf.baseName.replace("_platypus.vcf","")
     '''
     awk '$1 ~ /^#/ {print $0;next} {print $0 | "LC_ALL=C sort -k1,1V -k2,2n"}' !{vcf_tag}_platypus.vcf | bgzip > !{vcf_tag}_platypus_sort.vcf.gz
-    zcat !{vcf_tag}_platypus_sort.vcf.gz | vt decompose -s - | vt decompose_blocksub -a - | vt normalize -r !{ref} -q - | vt uniq - | bgzip > !{vcf_tag}_vt.vcf.gz
+    zcat !{vcf_tag}_platypus_sort.vcf.gz | !{params.vt_bin} decompose -s - | !{params.vt_bin} decompose_blocksub -a - | !{params.vt_bin} normalize -r !{ref} -q - | !{params.vt_bin} uniq - | bgzip > !{vcf_tag}_vt.vcf.gz
     tabix -p vcf !{vcf_tag}_vt.vcf.gz
     '''
   }

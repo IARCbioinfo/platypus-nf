@@ -132,7 +132,7 @@ if(params.compression){
 
     tag { vcf_tag }
 
-    publishDir params.output_folder, mode: 'move', pattern: '*.vcf.gz'
+    publishDir params.output_folder, mode: 'move', pattern: '*.vcf.gz*'
 
     input:
     file platypus_vcf
@@ -140,7 +140,7 @@ if(params.compression){
     file ref_fai
 
     output:
-    file("${vcf_tag}_vt.vcf.gz") into compressed_VCF
+    file("${vcf_tag}.vcf.gz") into compressed_VCF
 
     shell:
     vcf_tag = platypus_vcf.baseName.replace("_platypus.vcf","")

@@ -116,7 +116,7 @@ process platypus {
   file ref_fai
 
   output:
-  file '*vcf' into platypus_vcf
+  file '*vcf' into platypus_vcf mode flatten
 
   shell:
   bam_tag = bam_bai[0].baseName
@@ -143,7 +143,7 @@ if(params.normalization){
     file("${vcf_tag}_vt.vcf.gz") into vt_VCF
 
     shell:
-    vcf_tag = vcf.baseName.replace("_platypus.vcf","")
+    vcf_tag = platypus_vcf.baseName.replace("_platypus.vcf","")
     '''
     awk '$1 ~ /^#/ {print $0;next} {print $0 | "LC_ALL=C sort -k1,1V -k2,2n"}' !{vcf_tag}_platypus.vcf | bgzip > !{vcf_tag}_platypus_sort.vcf.gz
     zcat !{vcf_tag}_platypus_sort.vcf.gz | !{params.vt_bin} decompose -s - | !{params.vt_bin} decompose_blocksub -a - | !{params.vt_bin} normalize -r !{ref} -q - | !{params.vt_bin} uniq - | bgzip > !{vcf_tag}_vt.vcf.gz

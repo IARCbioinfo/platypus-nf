@@ -145,8 +145,8 @@ if(params.compression){
     shell:
     vcf_tag = platypus_vcf.baseName.replace("_platypus.vcf","")
     '''
-    bgzip -c !{vcf_tag}_platypus.vcf > !{vcf_tag}_platypus.vcf.gz
-    tabix -p vcf !{vcf_tag}_platypus.vcf.gz
+    bgzip -c !{vcf_tag}.vcf > !{vcf_tag}.vcf.gz
+    tabix -p vcf !{vcf_tag}.vcf.gz
     '''
   }
 

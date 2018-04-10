@@ -4,8 +4,7 @@
 ## Description
 Perform germline variant calling with platypus, with optional use of optimized parameters based on performance analysis on [Illumina Platinium Genome](https://www.illumina.com/platinumgenomes.html) (both whole exome/genome sequencing).
 
-The platypus nextflow pipeline can also add two steps to the variant calling:
-  * normalize (`vt`), compress (`bgzip`) and index (`tabix`)
+The platypus nextflow pipeline can also add a step to the variant calling:
   * compress (`bgzip`) and index (`tabix`)
 
 ## Dependencies
@@ -27,7 +26,6 @@ The platypus nextflow pipeline can also add two steps to the variant calling:
   | Name             | Example value               | Description  |
   |------------------|-----------------------------|--------------|
   | --platypus_bin  | /usr/bin/Platypus.py        | path to platypus executable |
-  | --vt_bin  | /usr/bin/vt        | path to vt executable |
   | --region         | chr1;chr1:0-1000; mybed.bed | region to call |
   | --cpu            |            12 | number of cpu used by platypus |
   | --mem            |            4 | memory in GB used by platypus |

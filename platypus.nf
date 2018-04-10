@@ -53,13 +53,13 @@ if (params.help) {
     log.info ""
     log.info "Flags:"
     log.info "--optimized                                    Run platypus with optimized option based on WGS/WES of GIAB platinium"
-    log.info "--normalization                                Normalize the VCF with vt"
+    log.info "--compression                                  Compress and index the VCF (bgzip/tabix)"
     log.info ""
     exit 0
 
 }
 
-params.normalization = null
+params.compression = null
 params.input_folder = null
 params.output_folder = "."
 params.platypus_bin = "/Platypus/bin/Platypus.py"
@@ -106,7 +106,7 @@ process platypus {
 
   tag { bam_tag }
 
-  if(params.normalization == null){
+  if(params.compression == null){
     publishDir params.output_folder, mode: 'move', pattern: '*.vcf'
   }
 
@@ -126,9 +126,9 @@ process platypus {
 
 }
 
-if(params.normalization){
+if(params.compression){
 
-  process vt {
+  process bgziptabix {
 
     tag { vcf_tag }
 
@@ -140,14 +140,13 @@ if(params.normalization){
     file ref_fai
 
     output:
-    file("${vcf_tag}_vt.vcf.gz") into vt_VCF
+    file("${vcf_tag}_vt.vcf.gz") into compressed_VCF
 
     shell:
     vcf_tag = platypus_vcf.baseName.replace("_platypus.vcf","")
     '''
-    awk '$1 ~ /^#/ {print $0;next} {print $0 | "LC_ALL=C sort -k1,1V -k2,2n"}' !{vcf_tag}_platypus.vcf | bgzip > !{vcf_tag}_platypus_sort.vcf.gz
-    zcat !{vcf_tag}_platypus_sort.vcf.gz | !{params.vt_bin} decompose -s - | !{params.vt_bin} decompose_blocksub -a - | !{params.vt_bin} normalize -r !{ref} -q - | !{params.vt_bin} uniq - | bgzip > !{vcf_tag}_vt.vcf.gz
-    tabix -p vcf !{vcf_tag}_vt.vcf.gz
+    bgzip -c !{vcf_tag}_platypus.vcf > !{vcf_tag}_platypus.vcf.gz
+    tabix -p vcf !{vcf_tag}_platypus.vcf.gz
     '''
   }
 

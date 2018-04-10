@@ -132,7 +132,7 @@ if(params.normalization){
 
     tag { vcf_tag }
 
-    publishDir params.output_folder, mode: 'move', pattern: '*.vcf'
+    publishDir params.output_folder, mode: 'move', pattern: '*.vcf.gz'
 
     input:
     file platypus_vcf

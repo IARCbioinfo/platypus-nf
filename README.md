@@ -40,6 +40,7 @@ Flags are special parameters without value.
 | Name      | Description     |
 |-----------|-----------------|
 | --help    | Display help |
+| --compression  | compress and index the VCF file  |
 | --optimized    |  use optimized parameters: --badReadsThreshold=0 --qdThreshold=0 --rmsmqThreshold=20 --hapScoreThreshold=10 --scThreshold=0.99 |
 
 ## Download test data set

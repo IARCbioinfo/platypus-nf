@@ -53,14 +53,17 @@ if (params.help) {
     log.info ""
     log.info "Flags:"
     log.info "--optimized                                    Run platypus with optimized option based on WGS/WES of GIAB platinium"
+    log.info "--compression                                  Compress and index the VCF (bgzip/tabix)"
     log.info ""
     exit 0
 
 }
 
+params.compression = null
 params.input_folder = null
 params.output_folder = "."
 params.platypus_bin = "/Platypus/bin/Platypus.py"
+params.vt_bin = "vt/vt"
 params.region = null
 
 if (params.region){
@@ -103,7 +106,9 @@ process platypus {
 
   tag { bam_tag }
 
-  publishDir params.output_folder, mode: 'move', pattern: '*.vcf.gz'
+  if(params.compression == null){
+    publishDir params.output_folder, mode: 'move', pattern: '*.vcf'
+  }
 
   input:
   file bam_bai
@@ -111,13 +116,38 @@ process platypus {
   file ref_fai
 
   output:
-  file '*vcf.gz' into output_vcf
+  file '*vcf' into platypus_vcf mode flatten
 
   shell:
   bam_tag = bam_bai[0].baseName
   '''
-  !{params.platypus_bin} callVariants --bamFiles=!{bam_tag}.bam --output=!{bam_tag}_platypus.vcf !{region_tag}!{params.region} --refFile=!{ref} !{opt_options} !{params.options}
-  bgzip -c !{bam_tag}_platypus.vcf > !{bam_tag}_platypus.vcf.gz
+  !{params.platypus_bin} callVariants --bamFiles=!{bam_tag}.bam --output=!{bam_tag}_platypus.vcf !{region_tag}!{params.region} --refFile=!{params.ref} !{opt_options} !{params.options}
   '''
+
+}
+
+if(params.compression){
+
+  process bgziptabix {
+
+    tag { vcf_tag }
+
+    publishDir params.output_folder, mode: 'move', pattern: '*.vcf.gz*'
+
+    input:
+    file platypus_vcf
+    file ref
+    file ref_fai
+
+    output:
+    file("${vcf_tag}.vcf.gz*") into compressed_VCF
+
+    shell:
+    vcf_tag = platypus_vcf.baseName.replace("_platypus.vcf","")
+    '''
+    bgzip -c !{vcf_tag}.vcf > !{vcf_tag}.vcf.gz
+    tabix -p vcf !{vcf_tag}.vcf.gz
+    '''
+  }
 
 }

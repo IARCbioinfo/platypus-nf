@@ -140,7 +140,7 @@ if(params.compression){
     file ref_fai
 
     output:
-    file("${vcf_tag}.vcf.gz") into compressed_VCF
+    file("${vcf_tag}.vcf.gz*") into compressed_VCF
 
     shell:
     vcf_tag = platypus_vcf.baseName.replace("_platypus.vcf","")

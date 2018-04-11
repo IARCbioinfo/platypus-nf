@@ -120,7 +120,10 @@ nodes: [
 { data: { id: 'p8'}, classes: 'ORIGIN' },
 { data: { id: 'p9'}, classes: 'ORIGIN' },
 { data: { id: 'p10', label: 'platypus'}, classes: 'PROCESS' },
-{ data: { id: 'p11'}, classes: 'NODE' },
+{ data: { id: 'p11'}, classes: 'ORIGIN' },
+{ data: { id: 'p12'}, classes: 'ORIGIN' },
+{ data: { id: 'p13', label: 'bgziptabix'}, classes: 'PROCESS' },
+{ data: { id: 'p14'}, classes: 'NODE' },
 ],
 edges: [
 { data: { source: 'p0', target: 'p1'} },
@@ -133,7 +136,10 @@ edges: [
 { data: { source: 'p7', target: 'p10', label: 'bam_bai' } },
 { data: { source: 'p8', target: 'p10', label: 'ref' } },
 { data: { source: 'p9', target: 'p10', label: 'ref_fai' } },
-{ data: { source: 'p10', target: 'p11', label: 'platypus_vcf' } },
+{ data: { source: 'p10', target: 'p13', label: 'platypus_vcf' } },
+{ data: { source: 'p11', target: 'p13', label: 'ref' } },
+{ data: { source: 'p12', target: 'p13', label: 'ref_fai' } },
+{ data: { source: 'p13', target: 'p14', label: 'compressed_VCF' } },
 ],
 },
 

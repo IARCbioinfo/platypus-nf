@@ -121,7 +121,7 @@ process platypus {
   shell:
   bam_tag = bam_bai[0].baseName
   '''
-  !{params.platypus_bin} callVariants --bamFiles=!{bam_tag}.bam --output=!{bam_tag}_platypus.vcf !{region_tag}!{params.region} --refFile=!{params.ref} !{opt_options} !{params.options}
+  !{params.platypus_bin} callVariants --bamFiles=!{bam_tag}.bam --output=!{bam_tag}_platypus.vcf !{region_tag}!{params.region} --refFile=!{ref} !{opt_options} !{params.options}
   '''
 
 }

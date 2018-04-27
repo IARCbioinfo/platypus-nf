@@ -62,7 +62,7 @@ if (params.help) {
 params.compression = null
 params.input_folder = null
 params.output_folder = "."
-params.platypus_bin = "platypus"
+params.platypus_bin = "/Platypus/bin/Platypus.py"
 params.region = null
 
 if (params.region){

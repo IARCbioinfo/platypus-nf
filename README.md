@@ -45,12 +45,12 @@ Flags are special parameters without value.
 
 ## Download test data set
   ```
-  cd ~ && git clone https://github.com/iarcbioinfo/data_test
+  git clone https://github.com/iarcbioinfo/data_test
   ```
 
 ## Usage
   ```
-  nextflow run iarcbioinfo/platypus-nf -with-docker --input_folder ~/data_test/BAM/ --ref ~/data_test/REF/17.fasta
+  nextflow run iarcbioinfo/platypus-nf -with-docker --input_folder data_test/BAM/ --ref data_test/REF/17.fasta
   ```
 
 ## Output

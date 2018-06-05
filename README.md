@@ -1,6 +1,8 @@
 # Platypus-nf
 ## Germline variant calling with platypus
 
+![Workflow representation](platypus-nf.png?raw=true "Scheme of platypus germline variant calling Workflow")
+
 ## Description
 Perform germline variant calling with platypus, with optional use of optimized parameters based on performance analysis on [Illumina Platinium Genome](https://www.illumina.com/platinumgenomes.html) (both whole exome/genome sequencing).
 

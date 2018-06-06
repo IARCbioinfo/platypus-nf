@@ -3,7 +3,7 @@ FROM biocontainers/biocontainers:v1.0.0_cv4
 
 ################## METADATA ######################
 
-LABEL base_image="biocontainers:latest"
+LABEL base_image="biocontainers:v1.0.0_cv4"
 LABEL version="1.0"
 LABEL software="platypus-nf"
 LABEL software.version="1.0"

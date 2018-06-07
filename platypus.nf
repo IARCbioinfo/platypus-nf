@@ -63,14 +63,9 @@ params.compression = null
 params.input_folder = null
 params.output_folder = "."
 params.platypus_bin = "platypus"
-params.region = null
+params.region = "no_input_region"
 
-if (params.region){
-  region_tag = "--region="
-} else {
-  region_tag = ""
-}
-
+region = file(params.region)
 ref = file(params.ref)
 ref_fai = file( params.ref+'.fai' )
 params.cpu = 1
@@ -113,14 +108,16 @@ process platypus {
   file bam_bai
   file ref
   file ref_fai
+  file region
 
   output:
   file '*vcf' into platypus_vcf mode flatten
 
   shell:
+  region_arg = region.name == "no_input_region" ? "" : "--region ${region}"
   bam_tag = bam_bai[0].baseName
   '''
-  !{params.platypus_bin} callVariants --bamFiles=!{bam_tag}.bam --output=!{bam_tag}_platypus.vcf !{region_tag}!{params.region} --refFile=!{ref} !{opt_options} !{params.options}
+  !{params.platypus_bin} callVariants --bamFiles=!{bam_tag}.bam --output=!{bam_tag}_platypus.vcf --refFile=!{ref} !{opt_options} !{params.options}
   '''
 
 }

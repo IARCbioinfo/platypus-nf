@@ -114,10 +114,10 @@ process platypus {
   file '*vcf' into platypus_vcf mode flatten
 
   shell:
-  region_arg = region.name == "no_input_region" ? "" : "--region ${region}"
+  region_arg = region.name == "no_input_region" ? "" : "--region=${region}"
   bam_tag = bam_bai[0].baseName
   '''
-  !{params.platypus_bin} callVariants --bamFiles=!{bam_tag}.bam --output=!{bam_tag}_platypus.vcf --refFile=!{ref} !{opt_options} !{params.options}
+  !{params.platypus_bin} callVariants --bamFiles=!{bam_tag}.bam --output=!{bam_tag}_platypus.vcf !{region_arg} --refFile=!{ref} !{opt_options} !{params.options}
   '''
 
 }

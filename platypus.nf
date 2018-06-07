@@ -52,7 +52,7 @@ if (params.help) {
     log.info "                                               Caution: for --options, space between quotes and arguments are mandatory. "
     log.info ""
     log.info "Flags:"
-    log.info "--optimized                                    Run platypus with optimized option based on WGS/WES of GIAB platinium"
+    log.info "--optimized                                    Run platypus with optimized option based on WGS/WES of Illumina platinium genomes"
     log.info "--compression                                  Compress and index the VCF (bgzip/tabix)"
     log.info ""
     exit 0
@@ -71,13 +71,8 @@ ref_fai = file( params.ref+'.fai' )
 params.cpu = 1
 params.mem = 4
 
-params.optimized = false
-if (params.optimized){
-  opt_options = "--badReadsThreshold=0 --qdThreshold=0 --rmsmqThreshold=20 --hapScoreThreshold=10 --scThreshold=0.99"
-} else {
-  opt_options = ""
-}
-
+params.optimized = ""
+opt_options = "--badReadsThreshold=0 --qdThreshold=0 --rmsmqThreshold=20 --hapScoreThreshold=10 --scThreshold=0.99"
 params.options = ""
 
 bams = Channel.fromPath( params.input_folder+'/*.bam' )
@@ -115,9 +110,10 @@ process platypus {
 
   shell:
   region_arg = region.name == "no_input_region" ? "" : "--region=${region}"
+  options_arg = "${params.optimized}" == "" ? "${params.options}" : "${opt_options}"
   bam_tag = bam_bai[0].baseName
   '''
-  !{params.platypus_bin} callVariants --bamFiles=!{bam_tag}.bam --output=!{bam_tag}_platypus.vcf !{region_arg} --refFile=!{ref} !{opt_options} !{params.options}
+  !{params.platypus_bin} callVariants --bamFiles=!{bam_tag}.bam --output=!{bam_tag}_platypus.vcf !{region_arg} --refFile=!{ref} !{options_arg}
   '''
 
 }

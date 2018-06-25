@@ -21,7 +21,7 @@ test:
     - |
       cd ~ && nextflow run ~/platypus-nf/platypus.nf -with-docker iarcbioinfo/platypus-nf --input_folder ~/data_test/BAM/ --ref ~/data_test/REF/17.fasta --compression -with-dag dag.png
       cd ~ && nextflow run ~/platypus-nf/platypus.nf -with-docker iarcbioinfo/platypus-nf --input_folder ~/data_test/BAM/ --ref ~/data_test/REF/17.fasta --compression -with-dag dag.html
-      mv dag* ~/platypus-nf/
+      mv *dag* ~/platypus-nf/
 deployment:
   git:
     branch: [master, dev]

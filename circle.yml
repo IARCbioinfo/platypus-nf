@@ -14,14 +14,12 @@ test:
       cd ~ && nextflow run ~/platypus-nf/platypus.nf -with-docker iarcbioinfo/platypus-nf --help
     - | # test
       cd ~ && nextflow run ~/platypus-nf/platypus.nf -with-docker iarcbioinfo/platypus-nf --input_folder ~/data_test/BAM/ --ref ~/data_test/REF/17.fasta
-    - | # test --compression option
-      cd ~ && nextflow run ~/platypus-nf/platypus.nf -with-docker iarcbioinfo/platypus-nf --input_folder ~/data_test/BAM/ --ref ~/data_test/REF/17.fasta --compression
     - | # test --region option
       cd ~ && nextflow run ~/platypus-nf/platypus.nf -with-docker iarcbioinfo/platypus-nf --input_folder ~/data_test/BAM/ --ref ~/data_test/REF/17.fasta --region BED/TP53_small.bed
-    - |
-      cd ~ && nextflow run ~/platypus-nf/platypus.nf -with-docker iarcbioinfo/platypus-nf --input_folder ~/data_test/BAM/ --ref ~/data_test/REF/17.fasta --compression -with-dag dag.png
-      cd ~ && nextflow run ~/platypus-nf/platypus.nf -with-docker iarcbioinfo/platypus-nf --input_folder ~/data_test/BAM/ --ref ~/data_test/REF/17.fasta --compression -with-dag dag.html
-      mv *dag* ~/platypus-nf/
+    - | # test --compression option
+      cd ~ && nextflow run ~/platypus-nf/platypus.nf -with-docker iarcbioinfo/platypus-nf --input_folder ~/data_test/BAM/ --ref ~/data_test/REF/17.fasta --compression
+      mv nf-pipeline_info/platypus-nf_dag.html ~/platypus-nf/
+
 deployment:
   git:
     branch: [master, dev]

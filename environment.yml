@@ -1,0 +1,5 @@
+name: platypus-nf
+channels:
+  - bioconda
+dependencies:
+  - platypus-variant=0.8.1.1

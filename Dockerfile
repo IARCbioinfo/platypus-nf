@@ -18,4 +18,6 @@ MAINTAINER Tiffany Delhomme <delhommet@students.iarc.fr>
 
 ################## INSTALLATION ######################
 
-RUN conda install platypus-variant
+COPY environment.yml /
+RUN conda env create -f /environment.yml && conda clean -a
+ENV PATH /opt/conda/envs/platypus-nf/bin:$PATH

@@ -113,7 +113,7 @@ process platypus {
   options_arg = "${params.optimized}" == "" ? "${params.options}" : "${opt_options}"
   bam_tag = bam_bai[0].baseName
   '''
-  !{params.platypus_bin} callVariants --bamFiles=!{bam_tag}.bam --output=!{bam_tag}_platypus.vcf !{region_arg} --refFile=!{ref} !{options_arg}
+  !{params.platypus_bin} callVariants --nCPU=!{params.cpu} --bamFiles=!{bam_tag}.bam --output=!{bam_tag}_platypus.vcf !{region_arg} --refFile=!{ref} !{options_arg}
   '''
 
 }

@@ -79,9 +79,9 @@ bams = Channel.fromPath( params.input_folder+'/*.bam' )
               .ifEmpty { error "Cannot find any bam file in: ${params.input_folder}" }
               .map {  path -> [ path.name.replace(".bam",""), path ] }
 
-bais = Channel.fromPath( params.input_folder+'/*.bam.bai' )
+bais = Channel.fromPath( params.input_folder+'/*.bai' )
               .ifEmpty { error "Cannot find any bai file in: ${params.input_folder}" }
-              .map { path -> [ path.name.replace(".bam.bai",""), path ] }
+              .map { path -> [ path.name.replace('.bai','').replace('.bam',''), path ] }
 
 bam_bai = bams
           .phase(bais)

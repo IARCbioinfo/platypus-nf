@@ -18,6 +18,8 @@ test:
       cd ~ && nextflow run ~/platypus-nf/platypus.nf -with-docker iarcbioinfo/platypus-nf --input_folder ~/data_test/BAM/ --ref ~/data_test/REF/17.fasta --region BED/TP53_small.bed
     - | # test --compression option
       cd ~ && nextflow run ~/platypus-nf/platypus.nf -with-docker iarcbioinfo/platypus-nf --input_folder ~/data_test/BAM/ --ref ~/data_test/REF/17.fasta --compression
+    - | # test both --compression and --filter option
+      cd ~ && nextflow run ~/platypus-nf/platypus.nf -with-docker iarcbioinfo/platypus-nf --input_folder ~/data_test/BAM/ --ref ~/data_test/REF/17.fasta --compression --filter
       mv nf-pipeline_info/platypus-nf_dag.html ~/platypus-nf/
 
 deployment:

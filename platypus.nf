@@ -143,6 +143,7 @@ if(params.filter){
     '''
     grep "^#" !{vcf_tag}.vcf > output
     grep -v "^#" !{vcf_tag}.vcf | grep "PASS" >> output
+    rm !{vcf_tag}.vcf
     mv output !{vcf_tag}.vcf
     '''
   }

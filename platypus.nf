@@ -43,7 +43,7 @@ if (params.help) {
     log.info "--ref                      FASTA               Path to fasta reference."
     log.info ""
     log.info "Optional arguments:"
-    log.info "--platypus_bin            PATH                Path to platypus. Default: Platypus.py"
+    log.info "--platypus_bin             PATH                Path to platypus. Default: Platypus.py"
     log.info "--region                   FILE or REGION      Bed file or region (e.g. chr1, chr1:0-1000)"
     log.info '--cpu                      INTEGER             Number of cpu used for parallel variant calling. Default: 1.'
     log.info '--mem                      INTEGER             Size of memory used, in GB. Default: 4.'
@@ -52,13 +52,15 @@ if (params.help) {
     log.info "                                               Caution: for --options, space between quotes and arguments are mandatory. "
     log.info ""
     log.info "Flags:"
-    log.info "--optimized                                    Run platypus with optimized option based on WGS/WES of Illumina platinium genomes"
-    log.info "--compression                                  Compress and index the VCF (bgzip/tabix)"
+    log.info "--optimized                                    Run platypus with optimized option based on WGS/WES of Illumina platinium genomes."
+    log.info "--compression                                  Compress and index the VCF (bgzip/tabix)."
+    log.info "--filter                                       Filter platypus variant calls on PASS."
     log.info ""
     exit 0
 
 }
 
+params.filter = null
 params.compression = null
 params.input_folder = null
 params.output_folder = "."
@@ -95,7 +97,7 @@ process platypus {
 
   tag { bam_tag }
 
-  if(params.compression == null){
+  if(params.compression == null & params.filter == null){
     publishDir params.output_folder, mode: 'move', pattern: '*.vcf'
   }
 
@@ -106,7 +108,7 @@ process platypus {
   file region
 
   output:
-  file '*vcf' into platypus_vcf mode flatten
+  file '*vcf' into platypus_vcf_to_filter mode flatten
 
   shell:
   region_arg = region.name == "no_input_region" ? "" : "--region=${region}"
@@ -115,7 +117,39 @@ process platypus {
   '''
   !{params.platypus_bin} callVariants --nCPU=!{params.cpu} --bamFiles=!{bam_tag}.bam --output=file.vcf !{region_arg} --refFile=!{ref} !{options_arg}
   sed 's/^##FORMAT=<ID=NV,Number=.,/##FORMAT=<ID=NV,Number=A,/1g' file.vcf | sed 's/^##FORMAT=<ID=NR,Number=.,/##FORMAT=<ID=NR,Number=A,/1g' > !{bam_tag}_platypus.vcf
+  rm file.vcf
   '''
+
+}
+
+if(params.filter){
+
+  process filter_on_pass {
+
+    tag { vcf_tag }
+
+    if(params.compression == null){
+      publishDir params.output_folder, mode: 'move', pattern: '*.vcf'
+    }
+
+    input:
+    file platypus_vcf_to_filter
+
+    output:
+    file("${vcf_tag}.vcf") into platypus_vcf mode flatten
+
+    shell:
+    vcf_tag = platypus_vcf_to_filter.baseName.replace("_platypus.vcf","")
+    '''
+    grep "^#" !{vcf_tag}.vcf > output
+    grep -v "^#" !{vcf_tag}.vcf | grep "PASS" >> output
+    mv output !{vcf_tag}.vcf
+    '''
+  }
+
+} else {
+
+  platypus_vcf = platypus_vcf_to_filter
 
 }
 

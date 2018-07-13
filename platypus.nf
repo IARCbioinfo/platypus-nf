@@ -141,9 +141,7 @@ if(params.filter){
     shell:
     vcf_tag = platypus_vcf_to_filter.baseName.replace("_platypus.vcf","")
     '''
-    grep "^#" !{vcf_tag}.vcf > output
-    grep -v "^#" !{vcf_tag}.vcf | grep "PASS" >> output
-    rm !{vcf_tag}.vcf
+    bcftools view -f PASS !{vcf_tag}.vcf > output
     mv output !{vcf_tag}.vcf
     '''
   }

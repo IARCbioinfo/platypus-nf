@@ -113,7 +113,8 @@ process platypus {
   options_arg = "${params.optimized}" == "" ? "${params.options}" : "${opt_options}"
   bam_tag = bam_bai[0].baseName
   '''
-  !{params.platypus_bin} callVariants --nCPU=!{params.cpu} --bamFiles=!{bam_tag}.bam --output=!{bam_tag}_platypus.vcf !{region_arg} --refFile=!{ref} !{options_arg}
+  !{params.platypus_bin} callVariants --nCPU=!{params.cpu} --bamFiles=!{bam_tag}.bam --output=file.vcf !{region_arg} --refFile=!{ref} !{options_arg}
+  sed 's/^##FORMAT=<ID=NV,Number=.,/##FORMAT=<ID=NV,Number=A,/1g' file.vcf | sed 's/^##FORMAT=<ID=NR,Number=.,/##FORMAT=<ID=NR,Number=A,/1g' > !{bam_tag}_platypus.vcf
   '''
 
 }

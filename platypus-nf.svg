@@ -31,9 +31,9 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:zoom="0.6312609"
-     inkscape:cx="708.59566"
-     inkscape:cy="615.95067"
+     inkscape:zoom="0.64112435"
+     inkscape:cx="517.99119"
+     inkscape:cy="353.50901"
      inkscape:window-x="69"
      inkscape:window-y="24"
      inkscape:window-maximized="1"
@@ -54,7 +54,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -10184,12 +10184,12 @@
      xml:space="preserve"
      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:'Nimbus Sans L';-inkscape-font-specification:'Nimbus Sans L';letter-spacing:0px;word-spacing:0px;fill:#d4d4d4;fill-opacity:1;stroke:none"
      x="-574.80249"
-     y="150.149"
+     y="47.74897"
      id="text3592-6-9-9-7"
      transform="rotate(-90)"><tspan
        sodipodi:role="line"
        x="-574.80249"
-       y="150.149"
+       y="47.74897"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:45px;line-height:1.25;font-family:'Nimbus Sans L';-inkscape-font-specification:'Nimbus Sans L';fill:#d4d4d4;fill-opacity:1"
        id="tspan9612-4">variant calling</tspan></text>
   <g
@@ -10200,7 +10200,7 @@
      inkscape:connector-curvature="0"
      id="path17443"
      d="M 464.10175,349.58911 V 456.93982 H 632.14527 V 711.19895 H 501.88914 v 155.66933"
-     style="fill:none;fill-opacity:1;stroke:#737373;stroke-width:8.25873089;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:24.77619222, 8.25873074;stroke-dashoffset:0;stroke-opacity:1" />
+     style="fill:none;fill-opacity:1;stroke:#737373;stroke-width:8.25839932;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:24.77519796,8.25839932;stroke-dashoffset:0;stroke-opacity:1" />
   <g
      id="g13686"
      transform="matrix(0.77714259,0,0,0.77714259,-1327.8388,-127.04356)">
@@ -10547,5 +10547,65 @@
      style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.79999989px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
      d="m 459.22902,891.89182 4,4 v 0"
      id="path11295"
+     inkscape:connector-curvature="0" />
+  <path
+     sodipodi:nodetypes="cccccc"
+     inkscape:connector-curvature="0"
+     id="path17443-1"
+     d="M 396.94532,349.58911 V 456.93982 H 241.20338 v 254.25913 h 120.72076 v 155.66933"
+     style="fill:none;fill-opacity:1;stroke:#737373;stroke-width:7.95039935;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:23.85119804,7.95039935;stroke-dashoffset:0;stroke-opacity:1" />
+  <g
+     transform="matrix(0.69730555,0,0,0.77957917,-846.10569,-270.09001)"
+     id="g12681-9-3">
+    <g
+       id="g12729-6"
+       transform="translate(-713.6,665.6)">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:#646464;stroke-width:8.68037033;stroke-miterlimit:4;stroke-dasharray:17.36074084, 8.68037042;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect3166-59-0-7-7-8-7"
+         width="134.67714"
+         height="463.41812"
+         x="392.21625"
+         y="-2494.4028"
+         ry="35.989647"
+         transform="rotate(90)" />
+      <text
+         id="text3757-3-0-0-5"
+         y="432.01733"
+         x="2259.5579"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;-inkscape-font-specification:'Source Sans Pro';letter-spacing:0px;word-spacing:0px;fill:#3c3c3c;fill-opacity:1;stroke:none"
+         xml:space="preserve"><tspan
+           id="tspan4751-9-5-3"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:32px;line-height:1.25;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro Bold';text-align:center;text-anchor:middle;fill:#646464;fill-opacity:1"
+           y="432.01733"
+           x="2259.5579"
+           sodipodi:role="line">filter</tspan></text>
+      <text
+         id="text3757-3-3-1-2-5"
+         y="470.38467"
+         x="2269.9448"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;-inkscape-font-specification:'Source Sans Pro';letter-spacing:0px;word-spacing:0px;fill:#3c3c3c;fill-opacity:1;stroke:none"
+         xml:space="preserve"><tspan
+           id="tspan12391-5-6-0-6"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;line-height:1.25;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro';text-align:center;text-anchor:middle;fill:#646464;fill-opacity:1"
+           y="470.38467"
+           x="2269.9448"
+           sodipodi:role="line">filter VCF on PASS</tspan><tspan
+           id="tspan4922-8-4-2-2"
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;line-height:1.25;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro Italic';text-align:center;text-anchor:middle;fill:#646464;fill-opacity:1"
+           y="510.38467"
+           x="2269.9448"
+           sodipodi:role="line">bcftools</tspan><tspan
+           id="tspan4751-1-8-4-9"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:32px;line-height:1.25;font-family:'Source Sans Pro';-inkscape-font-specification:'Source Sans Pro Bold';text-align:center;text-anchor:middle;fill:#646464;fill-opacity:1"
+           y="550.38464"
+           x="2275.5073"
+           sodipodi:role="line"> </tspan></text>
+    </g>
+  </g>
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#737373;stroke-width:7.2799994;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:14.5599988,14.5599988;stroke-dashoffset:0"
+     d="m 397.04999,612.75747 72.9056,0.0224 v 0 -0.15597 0.31195"
+     id="path9070"
      inkscape:connector-curvature="0" />
 </svg>

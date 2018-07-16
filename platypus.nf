@@ -116,7 +116,7 @@ process platypus {
   bam_tag = bam_bai[0].baseName
   '''
   !{params.platypus_bin} callVariants --nCPU=!{params.cpu} --bamFiles=!{bam_tag}.bam --output=file.vcf !{region_arg} --refFile=!{ref} !{options_arg}
-  sed 's/^##FORMAT=<ID=NV,Number=.,/##FORMAT=<ID=NV,Number=A,/1g' file.vcf | sed 's/^##FORMAT=<ID=NR,Number=.,/##FORMAT=<ID=NR,Number=A,/1g' > !{bam_tag}_platypus.vcf
+  sed 's/^##FORMAT=<ID=NV,Number=.,/##FORMAT=<ID=NV,Number=A,/1g' file.vcf | sed 's/^##FORMAT=<ID=NR,Number=.,/##FORMAT=<ID=NR,Number=A,/1g' | sed 's/^##INFO=<ID=FR,Number=.,/##INFO=<ID=FR,Number=A,/1g' > !{bam_tag}_platypus.vcf
   rm file.vcf
   '''
 
@@ -142,6 +142,9 @@ if(params.filter){
     vcf_tag = platypus_vcf_to_filter.baseName.replace("_platypus.vcf","")
     '''
     bcftools view -f PASS !{vcf_tag}.vcf > output
+    grep "^#" !{vcf_tag}.vcf > output
+    grep -v "^#" !{vcf_tag}.vcf | grep "PASS" >> output
+    rm !{vcf_tag}.vcf
     mv output !{vcf_tag}.vcf
     '''
   }

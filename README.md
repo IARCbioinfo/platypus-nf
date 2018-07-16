@@ -7,7 +7,7 @@
 Perform germline variant calling with platypus, with optional use of optimized parameters based on performance analysis on [Illumina Platinium Genome](https://www.illumina.com/platinumgenomes.html) (both whole exome/genome sequencing).
 
 The platypus nextflow pipeline can also add a step to the variant calling:
-  * compress (`bgzip`) and index (`tabix`). These two tools are part of the [samtools/htslib](http://www.htslib.org/doc/) C library, see documentation for the installation. 
+  * compress (`bgzip`) and index (`tabix`). These two tools are part of the [samtools/htslib](http://www.htslib.org/doc/) C library, see documentation for the installation.
 
 ## Dependencies
 
@@ -43,6 +43,7 @@ Flags are special parameters without value.
 |-----------|-----------------|
 | --help    | Display help |
 | --compression  | compress and index the VCF file  |
+| --filter  | output only PASS variants  |
 | --optimized    |  use optimized parameters: --badReadsThreshold=0 --qdThreshold=0 --rmsmqThreshold=20 --hapScoreThreshold=10 --scThreshold=0.99 |
 
 ## Download test data set

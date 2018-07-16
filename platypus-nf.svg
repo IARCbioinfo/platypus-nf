@@ -31,9 +31,9 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:zoom="0.64112435"
-     inkscape:cx="517.99119"
-     inkscape:cy="353.50901"
+     inkscape:zoom="0.92085373"
+     inkscape:cx="483.75571"
+     inkscape:cy="310.00618"
      inkscape:window-x="69"
      inkscape:window-y="24"
      inkscape:window-maximized="1"
@@ -10438,12 +10438,12 @@
   <text
      id="text21431"
      y="513.87518"
-     x="356.19138"
+     x="362.5914"
      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:'Nimbus Sans L';-inkscape-font-specification:'Nimbus Sans L';letter-spacing:0px;word-spacing:0px;fill:#969696;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
      xml:space="preserve"><tspan
        style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:1.25;font-family:'Nimbus Sans L';-inkscape-font-specification:'Nimbus Sans L';fill:#000000;fill-opacity:1"
        y="513.87518"
-       x="356.19138"
+       x="362.5914"
        id="tspan21433"
        sodipodi:role="line">default</tspan></text>
   <g
@@ -10608,4 +10608,15 @@
      d="m 397.04999,612.75747 72.9056,0.0224 v 0 -0.15597 0.31195"
      id="path9070"
      inkscape:connector-curvature="0" />
+  <text
+     id="text21423-3"
+     y="512.32611"
+     x="172.0784"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;line-height:0%;font-family:'Nimbus Sans L';-inkscape-font-specification:'Nimbus Sans L';letter-spacing:0px;word-spacing:0px;fill:#646464;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     xml:space="preserve"><tspan
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:1.25;font-family:'Nimbus Sans L';-inkscape-font-specification:'Nimbus Sans L';fill:#646464;fill-opacity:1;stroke-width:1px"
+       y="512.32611"
+       x="172.0784"
+       id="tspan21425-6"
+       sodipodi:role="line"> --filter </tspan></text>
 </svg>

@@ -9,12 +9,12 @@ jobs:
         - run: cd ~ && git clone --depth=1 https://github.com/IARCbioinfo/data_test.git
         - run: echo " docker.runOptions = '-u $(id -u):$(id -g)' " > ~/.nextflow/config
         - run: cd ~/project ; docker build -t iarcbioinfo/platypus-nf .
-        - run: nextflow run ~/project/platypus.nf -with-docker iarcbioinfo/platypus-nf --help
-        - run: nextflow run ~/project/platypus.nf -with-docker iarcbioinfo/platypus-nf --input_folder ~/data_test/BAM/ --ref ~/data_test/REF/17.fasta
-        - run: nextflow run ~/project/platypus.nf -with-docker iarcbioinfo/platypus-nf --input_folder ~/data_test/BAM/ --ref ~/data_test/REF/17.fasta --region BED/TP53_small.bed
-        - run: nextflow run ~/project/platypus.nf -with-docker iarcbioinfo/platypus-nf --input_folder ~/data_test/BAM/ --ref ~/data_test/REF/17.fasta --compression
-        - run: nextflow run ~/project/platypus.nf -with-docker iarcbioinfo/platypus-nf --input_folder ~/data_test/BAM/ --ref ~/data_test/REF/17.fasta --compression --filter
-        - run: cd ; mv ~/project/nf-pipeline_info/platypus_dag.html ~/project/
+        - run: cd ; nextflow run ~/project/platypus.nf -with-docker iarcbioinfo/platypus-nf --help
+        - run: cd ; nextflow run ~/project/platypus.nf -with-docker iarcbioinfo/platypus-nf --input_folder ~/data_test/BAM/ --ref ~/data_test/REF/17.fasta
+        - run: cd ; nextflow run ~/project/platypus.nf -with-docker iarcbioinfo/platypus-nf --input_folder ~/data_test/BAM/ --ref ~/data_test/REF/17.fasta --region BED/TP53_small.bed
+        - run: cd ; nextflow run ~/project/platypus.nf -with-docker iarcbioinfo/platypus-nf --input_folder ~/data_test/BAM/ --ref ~/data_test/REF/17.fasta --compression
+        - run: cd ; nextflow run ~/project/platypus.nf -with-docker iarcbioinfo/platypus-nf --input_folder ~/data_test/BAM/ --ref ~/data_test/REF/17.fasta --compression --filter
+        - run: cd ; mv ~/nf-pipeline_info/platypus_dag.html ~/project/
         - deploy:
             branch: [dev, master]
             command: chmod +x deploy.sh && ./deploy.sh

@@ -1,4 +1,6 @@
 cd ~/platypus-nf/
+commitID=`git log -n 1 --pretty="%h" -- environment.yml`
+sed -i '/^# environment.yml/d' Singularity && echo -e "\n# environment.yml commit ID: $commitID\n" >> Singularity
 git config --global user.email "delhommet@students.iarc.fr"
 git config --global user.name "Circle CI_$CIRCLE_PROJECT_REPONAME_$CIRCLE_BRANCH"
 git pull

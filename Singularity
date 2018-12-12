@@ -6,10 +6,10 @@ Bootstrap:docker
     DESCRIPTION Container image containing requirements for iarcbioinfo/platypus-nf pipeline
     VERSION 1.0
 
-    %files
+%files
         environment.yml /
 
-    %post
+%post
         /opt/conda/bin/conda env update -n root -f /environment.yml
         /opt/conda/bin/conda clean -a
 

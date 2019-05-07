@@ -60,7 +60,7 @@ Flags are special parameters without value.
   nextflow run iarcbioinfo/platypus-nf -profile singularity --input_folder data_test/BAM/ --ref data_test/REF/17.fasta
 
   With Conda
-  nextflow run iarcbioinfo/platypus-nf -profile singularity --input_folder data_test/BAM/ --ref data_test/REF/17.fasta
+  nextflow run iarcbioinfo/platypus-nf -profile conda --input_folder data_test/BAM/ --ref data_test/REF/17.fasta
   ```
 
 ## Output
